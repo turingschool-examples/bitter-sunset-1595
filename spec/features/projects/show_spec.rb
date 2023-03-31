@@ -30,43 +30,72 @@ RSpec.describe "Projects Show Page" do
     it "I see that project's name and material" do
       visit "/projects/#{@upholstery_tux.id}"
 
-      expect(page).to have_content("#{@upholstery_tux.name}")
-      expect(page).to have_content("#{@upholstery_tux.material}")
+      expect(page).to have_content("Project Name: #{@upholstery_tux.name}")
+      expect(page).to have_content("Project Material: #{@upholstery_tux.material}")
 
       visit "/projects/#{@lit_fit.id}"
 
-      expect(page).to have_content("#{@lit_fit.name}")
-      expect(page).to have_content("#{@lit_fit.material}")
+      expect(page).to have_content("Project Name: #{@lit_fit.name}")
+      expect(page).to have_content("Project Material: #{@lit_fit.material}")
 
       visit "/projects/#{@news_chic.id}"
 
-      expect(page).to have_content("#{@news_chic.name}")
-      expect(page).to have_content("#{@news_chic.material}")
+      expect(page).to have_content("Project Name: #{@news_chic.name}")
+      expect(page).to have_content("Project Material: #{@news_chic.material}")
 
       visit "/projects/#{@boardfit.id}"
 
-      expect(page).to have_content("#{@boardfit.name}")
-      expect(page).to have_content("#{@boardfit.material}")
+      expect(page).to have_content("Project Name: #{@boardfit.name}")
+      expect(page).to have_content("Project Material: #{@boardfit.material}")
     end
     it "I see the theme of the challenge that this project belongs to" do
       visit "/projects/#{@upholstery_tux.id}"
 
-      expect(page).to have_content(@furniture_challenge.theme)
+      expect(page).to have_content("Challenge Theme: #{@furniture_challenge.theme}")
 
       visit "/projects/#{@lit_fit.id}"
 
-      expect(page).to have_content(@furniture_challenge.theme)
+      expect(page).to have_content("Challenge Theme: #{@furniture_challenge.theme}")
 
       visit "/projects/#{@news_chic.id}"
 
-      expect(page).to have_content(@recycled_material_challenge.theme)
+      expect(page).to have_content("Challenge Theme: #{@recycled_material_challenge.theme}")
 
       visit "/projects/#{@boardfit.id}"
 
-      expect(page).to have_content(@recycled_material_challenge.theme)
+      expect(page).to have_content("Challenge Theme: #{@recycled_material_challenge.theme}")
+    end
+
+    it "I see a count of the number of contestants on this project" do
+      visit "/projects/#{@upholstery_tux.id}"
+ 
+      expect(page).to have_content("Number of Contestants: #{@upholstery_tux.contestant_count}")
+      
+      visit "/projects/#{@lit_fit.id}"
+
+      expect(page).to have_content("Number of Contestants: #{@lit_fit.contestant_count}")
+      
+      visit "/projects/#{@news_chic.id}"
+
+      expect(page).to have_content("Number of Contestants: #{@news_chic.contestant_count}")
+      
+      visit "/projects/#{@boardfit.id}"
+
+      expect(page).to have_content("Number of Contestants: #{@boardfit.contestant_count}")
+
     end
   end
 end
+
+# User Story 3 of 3
+# As a visitor,
+# When I visit a project's show page
+# I see a count of the number of contestants on this project
+
+# (e.g.    Litfit
+#     Material: Lamp Shade
+#   Challenge Theme: Apartment Furnishings
+#   Number of Contestants: 3 )
 # User Story 1 of 3
 
 # As a visitor,
