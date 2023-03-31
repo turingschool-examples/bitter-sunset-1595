@@ -29,7 +29,7 @@ RSpec.describe "Contestants Index Page" do
 
     it "I see a list of names of all the contestants" do
       visit "/contestants"
-      save_and_open_page
+
       expect(page).to have_content(@gretchen.name)
       expect(page).to have_content(@jay.name)
       expect(page).to have_content(@kentaro.name)
@@ -39,7 +39,7 @@ RSpec.describe "Contestants Index Page" do
         that they've been on" do
       
       visit "/contestants"
-
+      
       expect(page).to have_content(@news_chic.name)
       expect(page).to have_content(@upholstery_tux.name)
       expect(page).to have_content(@boardfit.name)
@@ -48,15 +48,3 @@ RSpec.describe "Contestants Index Page" do
   end
 end
 
-# User Story 2 of 3
-
-# As a visitor,
-# When I visit the contestants index page ("/contestants")
-# I see a list of names of all the contestants
-# And under each contestants name I see a list of the projects (names) that they've been on
-
-# (e.g.   Kentaro Kameyama
-#         Projects: Litfit, Rug Tuxedo
-
-#         Jay McCarroll
-#         Projects: LeatherFeather)
