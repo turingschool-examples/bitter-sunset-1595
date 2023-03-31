@@ -19,7 +19,7 @@ RSpec.describe "Project Show page" do
 
     it "displays theme of challenge it belongs to" do
       visit "/projects/#{@boardfit.id}"
-      require 'pry'; binding.pry
+      
       expect(page).to have_content(@recycled_material_challenge.theme)
     end
   end
