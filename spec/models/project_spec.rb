@@ -23,6 +23,7 @@ RSpec.describe Project, type: :model do
     describe '.challenge_theme' do
       it 'returns the shelter name for the given pet' do
         expect(@news_chic.challenge_theme).to eq(@recycled_material_challenge.theme)
+        expect(@boardfit.challenge_theme).to eq(@recycled_material_challenge.theme)
       end
     end
   end
