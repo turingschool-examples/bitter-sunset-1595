@@ -107,4 +107,14 @@ RSpec.describe "Projects Show Page" do
     end
   end
 end
+# User Story Extension 2 - Adding a contestant to a project
 
+# As a visitor,
+# When I visit a project's show page
+# I see a form to add a contestant to this project
+# When I fill out a field with an existing contestants id
+# And hit "Add Contestant To Project"
+# I'm taken back to the project's show page
+# And I see that the number of contestants has increased by 1
+# And when I visit the contestants index page
+# I see that project listed under that contestant's name
