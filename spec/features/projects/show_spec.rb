@@ -52,7 +52,7 @@ RSpec.describe "Project Show page" do
   describe "average contestant experience" do
     it 'Displays the average years of experience between the contestants on this project' do
       visit "/projects/#{@boardfit.id}"
-
+      save_and_open_page
       expect(page).to have_content("Average Contestant Experience: 11.5 years")
     end
   end
