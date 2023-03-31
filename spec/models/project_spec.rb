@@ -39,6 +39,7 @@ RSpec.describe Project, type: :model do
   describe "can retrieve challenge theme" do
     it 'project is able to retrieve theme of challenge' do
 
+    expect(@boardfit.challenge.theme).to eq("Recycled Material")
     expect(@boardfit.challenge_theme).to eq("Recycled Material")
     end
   end
@@ -46,8 +47,16 @@ RSpec.describe Project, type: :model do
   describe "contestant_count" do
     it "can provide the number of contestant on the project" do
 
+    expect(@boardfit.contestants.count).to eq(2)
     expect(@boardfit.contestant_count).to eq(2)
     expect(@news_chic.contestant_count).to eq(1)
+    end
+  end
+
+  describe "average_contestant_experience" do
+    it "returns an average of the years of experience between contestants as a float" do
+
+    expect(@boardfit.average_contestant_experience).to eq(11.5)
     end
   end
 end

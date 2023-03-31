@@ -38,6 +38,7 @@ RSpec.describe Contestant, type: :model do
       ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
       ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
 
+      expect(@jay.projects.collect(&:name)).to eq(["News Chic"])
       expect(@gretchen.get_projects).to eq(["News Chic", "Upholstery Tuxedo"])
     end
   end
