@@ -36,9 +36,13 @@ RSpec.describe "Contestants index page" do
       expect(page).to have_content(@erin.name)
     end
 
-    # it 'lists the project names that each contestant has been on' do
-
-    # end
+    it 'lists the project names that each contestant has been on' do
+      visit "/contestants"
+      require 'pry'; binding.pry
+      expect(page).to have_content(@news_chic.name)
+      expect(page).to have_content(@upholstery_tux.name)
+      expect(page).to have_content(@boardfit.name)
+    end
   end
   
 end
