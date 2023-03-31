@@ -38,7 +38,7 @@ RSpec.describe "Contestants index page" do
 
     it 'lists the project names that each contestant has been on' do
       visit "/contestants"
-      save_and_open_page
+      
       expect(page).to have_content(@news_chic.name)
       expect(page).to have_content(@upholstery_tux.name)
       expect(page).to have_content(@boardfit.name)

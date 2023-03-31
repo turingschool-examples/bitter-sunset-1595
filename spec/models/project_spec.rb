@@ -25,4 +25,11 @@ RSpec.describe Project, type: :model do
     expect(@boardfit.challenge_theme).to eq("Recycled Material")
     end
   end
+
+  describe "contestant_count" do
+    it "can provide the number of contestant on the project" do
+
+    expect(@boardfit.contestant_count).to eq(3)
+    end
+  end
 end
