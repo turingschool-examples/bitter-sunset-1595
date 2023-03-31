@@ -12,4 +12,17 @@ RSpec.describe Project, type: :model do
     it {should have_many :contestant_projects}
     it {should have_many(:contestants).through(:contestant_projects)}
   end
+
+  before(:each) do
+    @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
+    @news_chic = @recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
+    @boardfit = @recycled_material_challenge.projects.create(name: "Boardfit", material: "Cardboard Boxes")
+  end
+
+  describe "can retrieve challenge theme" do
+    it 'project is able to retrieve theme of challenge' do
+
+    expect(@boardfit.challenge_theme).to eq("Recycled Material")
+    end
+  end
 end
