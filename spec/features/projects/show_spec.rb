@@ -8,7 +8,7 @@ RSpec.describe '/projects/:id', type: :feature do
     end
 
     it 'I can see that projects name, material and the challenge theme' do
-      visit "/projects/#{upholstery_tux.id}"
+      visit "/projects/#{@upholstery_tux.id}"
 
       expect(page).to have_content("Project Upholstery Tuxedo")
       expect(page).to have_content("Material: Couch")
