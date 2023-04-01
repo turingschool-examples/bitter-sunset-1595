@@ -67,4 +67,35 @@ RSpec.describe "/projects/:id" do
 
     expect(page).to have_content("Average Contestant Experience: 11.5")
   end
+
+  it "has a form to add contestant to project" do
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_field("contestant_id")
+    expect(page).to have_button("Add Contestant to Project")
+    
+    visit "/projects/#{@upholstery_tux.id}"
+
+    expect(page).to have_field("contestant_id")
+    expect(page).to have_button("Add Contestant to Project")
+  end
+
+  it "form adds contestant to project" do
+    visit "/contestants"
+  
+    expect(page).to have_no_content("Boardfit, News Chic")
+
+    visit "/projects/#{@upholstery_tux.id}"
+
+    expect(page).to have_content("Number of Contestants: 2")
+
+    fill_in("contestant_id", with: @erin.id)
+    click_button("Add Contestant to Project")
+
+    expect(page).to have_content("Number of Contestants: 3")
+
+    visit "/contestants"
+
+    expect(page).to have_content("Boardfit, Upholstery Tuxedo")
+  end
 end
