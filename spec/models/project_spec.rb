@@ -20,6 +20,7 @@ RSpec.describe Project, type: :model do
 
       @gretchen = Contestant.create(name: "Gretchen Jones", age: 36, hometown: "NYC", years_of_experience: 12)
       @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
+      @erin = Contestant.create(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15)
 
       ContestantProject.create(contestant_id: @gretchen.id, project_id: @upholstery_tux.id)
       ContestantProject.create(contestant_id: @kentaro.id, project_id: @upholstery_tux.id)
@@ -31,6 +32,18 @@ RSpec.describe Project, type: :model do
 
     it 'can calculate average years of experience of contestants' do
       expect(@upholstery_tux.average_contestant_experience).to eq(10.0)
+    end
+
+    it 'can create a contestant project' do
+      expect(@upholstery_tux.contestants.count).to eq(2)
+      expect(@erin.projects.count).to eq(0)
+      expect(ContestantProject.count).to eq(2)
+
+      @upholstery_tux.create_contestant_project(@erin.id)
+
+      expect(@upholstery_tux.contestants.count).to eq(3)
+      expect(@erin.projects.count).to eq(1)
+      expect(ContestantProject.count).to eq(3)
     end
   end
 end

@@ -38,20 +38,19 @@ RSpec.describe '/projects/:id', type: :feature do
       it 'I see a form to add a contestant to this project' do
         visit "projects/#{@upholstery_tux.id}"
 
-        expect(page).to have_content('Contestant ID')
+        expect(page).to have_content('Contestant')
         expect(page).to have_field('contestant_id')
         expect(page).to have_button('Add Contestant To Project')
 
         fill_in 'contestant_id', with: "#{@erin.id}"
         click_button 'Add Contestant To Project'
 
-        expect(current_path).to eq("projects/#{@upholstery_tux.id}")
+        expect(current_path).to eq("/projects/#{@upholstery_tux.id}")
         expect(page).to have_content("Number of Contestants: 3")
         
         visit "/contestants"
         expect(page).to have_content(@erin.name)
-        expect(@upholstery_tux.name).to appear_after(@erin.name)
-        save_and_open_page
+        expect(@erin.projects).to eq([@upholstery_tux])
       end
     end
   end

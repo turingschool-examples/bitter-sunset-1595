@@ -11,4 +11,8 @@ class Project < ApplicationRecord
   def average_contestant_experience
     contestants.average(:years_of_experience)
   end
+
+  def create_contestant_project(c_input_id)
+    ContestantProject.create(contestant_id: c_input_id, project_id: id)
+  end
 end
