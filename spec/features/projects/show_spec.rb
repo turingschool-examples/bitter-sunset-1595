@@ -66,6 +66,5 @@ RSpec.describe "/projects/:id" do
     visit "/projects/#{@boardfit.id}"
 
     expect(page).to have_content("Average Contestant Experience: 11.5")
-    save_and_open_page
   end
 end
