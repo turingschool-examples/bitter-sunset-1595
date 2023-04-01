@@ -36,7 +36,7 @@ RSpec.describe "/contestants" do
 
   it "lists a contestants' projects" do
     visit "/contestants"
-    save_and_open_page
+
     expect(page).to have_content("Projects: News Chic, Upholstery Tuxedo")
     expect(page).to have_content("Projects: Boardfit, Upholstery Tuxedo")
   end

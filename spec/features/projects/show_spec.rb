@@ -52,5 +52,10 @@ RSpec.describe "/projects/:id" do
     visit "/projects/#{@news_chic.id}"
 
     expect(page).to have_content("Number of Contestants: 3")
+
+    visit "/projects/#{@boardfit.id}"
+
+    expect(page).to have_content("Number of Contestants: 2")
   end
+
 end
