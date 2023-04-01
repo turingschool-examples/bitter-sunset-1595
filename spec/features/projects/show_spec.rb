@@ -19,6 +19,7 @@ RSpec.describe "/projects/:id" do
 
     ContestantProject.create(contestant_id: @jay.id, project_id: @news_chic.id)
     ContestantProject.create(contestant_id: @gretchen.id, project_id: @news_chic.id)
+    ContestantProject.create(contestant_id: @kentaro.id, project_id: @news_chic.id)
     ContestantProject.create(contestant_id: @gretchen.id, project_id: @upholstery_tux.id)
     ContestantProject.create(contestant_id: @kentaro.id, project_id: @upholstery_tux.id)
     ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
@@ -45,5 +46,11 @@ RSpec.describe "/projects/:id" do
     visit "/projects/#{@upholstery_tux.id}"
 
     expect(page).to have_content("Challenge Theme: Apartment Furnishings")
+  end
+
+  it "has a count of all contestants on this project" do
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_content("Number of Contestants: 3")
   end
 end

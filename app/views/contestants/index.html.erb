@@ -1,4 +1,4 @@
 <% @contestants.each do |contestant| %>
 <h2><%= contestant.name %></h2>
-<p>Projects: <%= contestant.projects.map{|project| project.name}.join(", ") %></p>
+<p>Projects: <%= contestant.all_projects %></p>
 <% end %>
