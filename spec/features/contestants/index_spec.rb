@@ -27,7 +27,7 @@ RSpec.describe "/contestants" do
 
   it "shows a list of names of all contestants" do
     visit "/contestants"
-    save_and_open_page
+
     expect(page).to have_content("Jay McCarroll")
     expect(page).to have_content("Gretchen Jones")
     expect(page).to have_content("Kentaro Kameyama")
