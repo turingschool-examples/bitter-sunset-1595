@@ -28,5 +28,9 @@ RSpec.describe Project, type: :model do
     it 'can count contestants per project' do
       expect(@upholstery_tux.count_contestants).to eq(2)
     end
+
+    it 'can calculate average years of experience of contestants' do
+      expect(@upholstery_tux.average_contestant_experience).to eq(10.0)
+    end
   end
 end
