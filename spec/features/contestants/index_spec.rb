@@ -27,7 +27,7 @@ RSpec.describe "/contestants" do
 
   it "shows a list of names of all contestants" do
     visit "/contestants"
-
+    save_and_open_page
     expect(page).to have_content("Jay McCarroll")
     expect(page).to have_content("Gretchen Jones")
     expect(page).to have_content("Kentaro Kameyama")
@@ -37,7 +37,7 @@ RSpec.describe "/contestants" do
   it "lists a contestants' projects" do
     visit "/contestants"
 
-    expect(page).to have_content("Projects: News Chic, Uphostery Tuxedo")
-    expect(page).to have_content("Projects: Uphostery Tuxedo, Boardfit")
+    expect(page).to have_content("Projects: News Chic, Upholstery Tuxedo")
+    expect(page).to have_content("Projects: Upholstery Tuxedo, Boardfit")
   end
 end
