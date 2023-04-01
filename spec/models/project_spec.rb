@@ -40,8 +40,13 @@ RSpec.describe Project, type: :model do
     end
 
     it "can count its contestants" do
-      expect(@news_chic.how_many_contestants). to eq(3)
-      expect(@upholstery_tux.how_many_contestants). to eq(2)
+      expect(@news_chic.how_many_contestants).to eq(3)
+      expect(@upholstery_tux.how_many_contestants).to eq(2)
+    end
+
+    it "can calcluate its contestants' years of experience" do
+      expect(@news_chic.contestant_experience).to eq(11)
+      expect(@boardfit.contestant_experience).to eq(11.5)
     end
   end
 end

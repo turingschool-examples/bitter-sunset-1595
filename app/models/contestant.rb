@@ -6,4 +6,5 @@ class Contestant < ApplicationRecord
   def all_projects
     projects.pluck(:name).join(", ") 
   end
+
 end

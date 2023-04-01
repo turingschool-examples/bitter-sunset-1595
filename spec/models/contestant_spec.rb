@@ -43,5 +43,6 @@ RSpec.describe Contestant, type: :model do
       expect(@kentaro.all_projects).to eq("Boardfit, Upholstery Tuxedo")
       expect(@gretchen.all_projects).to eq("News Chic, Upholstery Tuxedo")
     end
+
   end
 end
