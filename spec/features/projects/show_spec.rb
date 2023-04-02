@@ -39,7 +39,7 @@ RSpec.describe '/projects/:id, Project Show Page' do
   describe 'User Story Extension 1' do
     it 'will show the average years of experience for the contestants that worked on that project' do
       visit "/projects/#{news_chic.id}"
-
+save_and_open_page
       expect(page).to have_content("Average Contestant Experience: 13.0 years")
     end
   end
