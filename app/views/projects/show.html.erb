@@ -3,5 +3,6 @@
 <% @projects.each do |project| %>
   <h3><%= project.name %></h1>
   <%= "Material: #{project.material}" %><br>
-  <%= "Challenge Theme: #{project.challenge.theme}" %><br><br>
+  <%= "Challenge Theme: #{project.challenge.theme}" %><br>
+  <%= "Number of Contestants: #{project.contestant_count}" %><br><br>
 <% end %>

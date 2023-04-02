@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe '/projects/:id, Project Show Page' do
+  Project.delete_all
   let!(:recycled_material_challenge) { Challenge.create!(theme: "Recycled Material", project_budget: 1000) }
   let!(:furniture_challenge) { Challenge.create(theme: "Apartment Furnishings", project_budget: 1000) }
   let!(:news_chic) { recycled_material_challenge.projects.create!(name: "News Chic", material: "Newspaper") }
@@ -30,17 +31,8 @@ RSpec.describe '/projects/:id, Project Show Page' do
   describe 'User Story 3' do
     it 'will show a count of the number of contestants on this project' do
       visit "/projects/#{news_chic.id}"
-      save_and_open_page
+
       expect(page).to have_content("Number of Contestants: 1")
     end
-#     User Story 3 of 3
-# As a visitor,
-# When I visit a project's show page
-# I see a count of the number of contestants on this project
-
-# (e.g.    Litfit
-#     Material: Lamp Shade
-#   Challenge Theme: Apartment Furnishings
-#   Number of Contestants: 3 )
   end
 end
