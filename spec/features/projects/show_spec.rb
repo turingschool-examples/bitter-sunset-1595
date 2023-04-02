@@ -11,6 +11,7 @@ RSpec.describe 'Project Show', type: :feature do
       news_chic = recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
       boardfit = recycled_material_challenge.projects.create(name: "Boardfit", material: "Cardboard Boxes")
       visit "/projects/#{news_chic.id}"
+      save_and_open_page
 
       expect(page).to have_content("News Chic")
       expect(page).to have_content("Newspaper")
