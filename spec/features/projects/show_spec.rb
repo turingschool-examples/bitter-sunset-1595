@@ -61,8 +61,18 @@ RSpec.describe '/projects/:id, Project Show Page' do
 
       expect(current_path).to eq("/projects/#{news_chic.id}")
       expect(page).to have_content("Number of Contestants: 2")
+      
+    end
+
+    it 'will list the project under the contestants index page' do
+      visit "/projects/#{news_chic.id}"
+
+      fill_in :contestant_id, with: kentaro.id
+      click_button "Add Contestant To Project"
+
+      visit "/contestants"
+
+      expect(page).to have_content("Kentaro Kameyama Projects: News Chic Litfit")
     end
   end
-# And when I visit the contestants index page
-# I see that project listed under that contestant's name
 end

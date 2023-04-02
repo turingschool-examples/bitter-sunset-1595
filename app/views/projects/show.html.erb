@@ -3,4 +3,11 @@
 <%= "Material: #{@project.material}" %><br>
 <%= "Challenge Theme: #{@project.challenge.theme}" %><br>
 <%= "Number of Contestants: #{@project.contestant_count}" %>
-<%= "Average Contestant Experience: #{@project.average_contestant_experience} years" %>
+<%= "Average Contestant Experience: #{@project.average_contestant_experience} years" %><br>
+
+<h2>Add a Contestant to this Project</h2>
+<%= form_with local: true do |form| %>
+  <%= form.label :contestant_id %>
+  <%= form.text_field :contestant_id %>
+  <%= form.submit "Add Contestant To Project" %>
+<% end %>
