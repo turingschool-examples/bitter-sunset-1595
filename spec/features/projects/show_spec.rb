@@ -48,19 +48,21 @@ RSpec.describe '/projects/:id, Project Show Page' do
     it 'will show a form to add a contestant to this project' do
       visit "/projects/#{news_chic.id}"
 
-      expect(page).to have_content("Add a Contestant to this Project:")
+      expect(page).to have_content("Add a Contestant to this Project")
       expect(page).to have_field(:contestant_id)
       expect(page).to have_button("Add Contestant To Project")
     end
-  end
 
-# As a visitor,
-# When I visit a project's show page
-# I see a form to add a contestant to this project
-# When I fill out a field with an existing contestants id
-# And hit "Add Contestant To Project"
-# I'm taken back to the project's show page
-# And I see that the number of contestants has increased by 1
+    it 'will add a contestant to the project and the contestants amount will increase by 1' do
+      visit "/projects/#{news_chic.id}"
+
+      fill_in :contestant_id, with: kentaro.id
+      click_button "Add Contestant To Project"
+
+      expect(current_path).to eq("/projects/#{news_chic.id}")
+      expect(page).to have_content("Number of Contestants: 2")
+    end
+  end
 # And when I visit the contestants index page
 # I see that project listed under that contestant's name
 end
