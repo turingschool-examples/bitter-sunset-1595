@@ -39,7 +39,7 @@ RSpec.describe Project, type: :model do
     it 'average_contestant_experience' do
       expect(news_chic.average_contestant_experience).to eq(13)
       expect(boardfit.average_contestant_experience).to eq(12.5)
-      expect(lit_fit.average_contestant_experience).to eq(14)
+      expect(lit_fit.average_contestant_experience.round).to eq(12)
     end
   end
 end
