@@ -39,8 +39,28 @@ RSpec.describe '/projects/:id, Project Show Page' do
   describe 'User Story Extension 1' do
     it 'will show the average years of experience for the contestants that worked on that project' do
       visit "/projects/#{news_chic.id}"
-save_and_open_page
+
       expect(page).to have_content("Average Contestant Experience: 13.0 years")
     end
   end
+
+  describe 'User Story Extension 2' do
+    it 'will show a form to add a contestant to this project' do
+      visit "/projects/#{news_chic.id}"
+
+      expect(page).to have_content("Add a Contestant to this Project:")
+      expect(page).to have_field(:contestant_id)
+      expect(page).to have_button("Add Contestant To Project")
+    end
+  end
+
+# As a visitor,
+# When I visit a project's show page
+# I see a form to add a contestant to this project
+# When I fill out a field with an existing contestants id
+# And hit "Add Contestant To Project"
+# I'm taken back to the project's show page
+# And I see that the number of contestants has increased by 1
+# And when I visit the contestants index page
+# I see that project listed under that contestant's name
 end
