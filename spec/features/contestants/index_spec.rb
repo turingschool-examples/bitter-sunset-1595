@@ -22,7 +22,7 @@ RSpec.describe '/projects/:id, Project Show Page' do
   describe 'User Story 2' do
     it 'when I visit the contestants index page, I see a list of names of all the contestants and a list of projects ' do
       visit "/contestants"
-save_and_open_page
+
       expect(page).to have_content("Jay McCarroll Projects: News Chic Boardfit")
       expect(page).to have_content("Gretchen Jones")
       expect(page).to have_content("Projects: Boardfit")
@@ -33,17 +33,3 @@ save_and_open_page
     end
   end
 end
-#   
-#   # User Story 2 of 3
-
-# # As a visitor,
-# # When I visit the contestants index page ("/contestants")
-# # I see a list of names of all the contestants
-# # And under each contestants name I see a list of the projects (names) that they've been on
-
-# # (e.g.   Kentaro Kameyama
-# #         Projects: Litfit, Rug Tuxedo
-
-# #         Jay McCarroll
-# #         Projects: LeatherFeather)
-# end

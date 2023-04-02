@@ -11,6 +11,11 @@ RSpec.describe '/projects/:id, Project Show Page' do
   let!(:gretchen) { Contestant.create!(name: "Gretchen Jones", age: 36, hometown: "NYC", years_of_experience: 12) }
   let!(:kentaro) { Contestant.create!(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8) }
   let!(:erin) { Contestant.create!(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15) }
+  let!(:jay_project_1) { ContestantProject.create!(contestant_id: jay.id, project_id: news_chic.id) }
+  let!(:jay_project_2) { ContestantProject.create!(contestant_id: jay.id, project_id: boardfit.id) }
+  let!(:gretchen_project_1) { ContestantProject.create!(contestant_id: gretchen.id, project_id: boardfit.id) }
+  let!(:kentaro_project_1) { ContestantProject.create!(contestant_id: kentaro.id, project_id: lit_fit.id) }
+  let!(:erin_project_1) { ContestantProject.create!(contestant_id: erin.id, project_id: lit_fit.id) }
   
   describe 'User Story 1' do
     it 'when I visit a project show page, I see that projects name, material, and challenge theme' do
@@ -20,5 +25,22 @@ RSpec.describe '/projects/:id, Project Show Page' do
       expect(page).to have_content("Material: #{news_chic.material}")
       expect(page).to have_content("Challenge Theme: #{news_chic.challenge.theme}")
     end
+  end
+
+  describe 'User Story 3' do
+    it 'will show a count of the number of contestants on this project' do
+      visit "/projects/#{news_chic.id}"
+      save_and_open_page
+      expect(page).to have_content("Number of Contestants: 1")
+    end
+#     User Story 3 of 3
+# As a visitor,
+# When I visit a project's show page
+# I see a count of the number of contestants on this project
+
+# (e.g.    Litfit
+#     Material: Lamp Shade
+#   Challenge Theme: Apartment Furnishings
+#   Number of Contestants: 3 )
   end
 end
