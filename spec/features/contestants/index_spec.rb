@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'contestant index', type: :feature do
 
-  describe 'I visit the contestants index page ("/contestants")' do
+  describe 'User Story 2 When I visit the contestants index page ("/contestants")' do
     it "I see a list of names of all the contestants and under each name lists of the projects (names) that they've been on" do
       recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
       furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
@@ -20,13 +20,14 @@ RSpec.describe 'contestant index', type: :feature do
       ContestantProject.create(contestant_id: gretchen.id, project_id: upholstery_tux.id)
       ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
       visit '/contestants'
+      save_and_open_page
 
       expect(page).to have_content("Jay McCarroll")
       expect(page).to have_content("Gretchen Jones")
       expect(page).to have_content("Erin Robertson")
-      # expect(page).to have_content("News Chic")
-      # expect(page).to have_content("Upholstery Tuxedo")
-      # expect(page).to have_content("Boardfit")
+      expect(page).to have_content("News Chic")
+      expect(page).to have_content("Upholstery Tuxedo")
+      expect(page).to have_content("Boardfit")
     end
   end
 end

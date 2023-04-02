@@ -17,8 +17,10 @@ RSpec.describe 'Project Show', type: :feature do
       expect(page).to have_content("Newspaper")
       expect(page).to have_content("Recycled Material")
       expect(page).to_not have_content("Boardfit")
-
     end
   end
 
+  describe "User Story 3 When I visit a project's show page", type: :feature do
+   
+  end
 end
