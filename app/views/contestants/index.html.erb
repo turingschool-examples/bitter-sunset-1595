@@ -2,8 +2,9 @@
 <% @contestants.each do |c| %>
 <ul>
 <li><%= c.name %></li>
+Projects:
 <% c.projects.each do |p| %>
-  <%= p.name %>/
+   <%= p.name %>/
 <% end %>
 </ul>
 <% end %>

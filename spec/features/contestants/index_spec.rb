@@ -30,10 +30,10 @@ RSpec.describe 'the contestants index' do
       visit '/contestants'
       expect(page).to have_content("All Contestants")
 
-      expect(page).to have_content("Jay McCarroll News Chic/")
-      expect(page).to have_content("Gretchen Jones News Chic/ Upholstery Tuxedo")
-      expect(page).to have_content("Kentaro Kameyama Boardfit/ Upholstery Tuxedo")
-      expect(page).to have_content("Erin Robertson Boardfit/")
+      expect(page).to have_content("Jay McCarroll Projects: News Chic")
+      expect(page).to have_content("Gretchen Jones Projects: News Chic/ Upholstery Tuxedo")
+      expect(page).to have_content("Kentaro Kameyama Projects: Upholstery Tuxedo/ Boardfit")
+      expect(page).to have_content("Erin Robertson Projects: Boardfit/")
     end
   end
 end
