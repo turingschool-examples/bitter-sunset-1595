@@ -1,19 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe 'Projects Show Page' do
-  it 'shows the projects information and challenge theme' do
-    visit "/projects/#{@lit_fit.id}"
+  Project.all.each do |project|
+    before(:each) do
+      visit "/projects/#{project.id}"
+    end
 
-    expect(page).to have_content(@lit_fit.name)
-    expect(page).to have_content("Material: #{@lit_fit.material}")
-    expect(page).to have_content("Challenge Theme: #{@lit_fit.challenge.theme}")
-  end
+    it 'shows the projects information' do
+      expect(page).to have_content(project.name)
+      expect(page).to have_content("Material: #{project.material}")
+    end
 
-  it 'shows another projects information and challenge theme' do
-    visit "/projects/#{@boardfit.id}"
+    it 'shows the project challenge theme' do
+      expect(page).to have_content("Challenge Theme: #{project.challenge.theme}")
+    end
 
-    expect(page).to have_content(@boardfit.name)
-    expect(page).to have_content("Material: #{@boardfit.material}")
-    expect(page).to have_content("Challenge Theme: #{@boardfit.challenge.theme}")
+    it 'shows the number of contestants on the project' do
+      expect(page).to have_content("Number of Contestants: #{project.contestant_count}")
+    end
   end
 end
