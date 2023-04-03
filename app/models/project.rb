@@ -7,6 +7,6 @@ class Project < ApplicationRecord
   def average_experience
     return 0 if contestants.empty?
 
-    contestants.average(:years_of_experience)
+    contestants.average(:years_of_experience).round(2)
   end
 end
