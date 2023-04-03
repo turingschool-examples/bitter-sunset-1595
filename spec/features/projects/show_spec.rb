@@ -14,9 +14,8 @@ RSpec.describe "Project Show Page", type: :feature do
   it 'can show the projects name, material, and the challenge that it belongs to' do
     visit "/projects/#{@project.id}"
 
-    expect(page).to have_content(@project.name)
-    expect(page).to have_content(@project.material)
-    expect(page).to have_content(@project.challenge.theme)
-    
+    expect(page).to have_content("News Chic")
+    expect(page).to have_content("Newspaper")
+    expect(page).to have_content("Recycled Material")
   end
 end
