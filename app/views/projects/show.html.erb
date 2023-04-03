@@ -5,3 +5,12 @@
 <h3>Challenge Theme:</h3><%= @challenge.theme %>
 <h3>Number of Contestants:</h3><%= @contestant_count %>
 <h3>Average Contestant Experience:</h3><p><%= @average_experience %> years</p>
+
+<h2>Add a Contestant to This Project</h2>
+
+<%= form_with url: "/contestant_projects", local: true, method: :post do |form| %>
+  <%= form.label :contestant_id, "Contestant ID" %>
+  <%= form.number_field :contestant_id %>
+  <%= form.hidden_field :project_id, value: @project.id %>
+  <%= form.submit "Add Contestant To Project" %>
+<% end %>
