@@ -56,4 +56,26 @@ RSpec.describe 'the project show page' do
     visit "/projects/#{@boardfit.id}"
     expect(page).to have_content("8.0 years")
   end
+
+  it 'should include a form to add a contestant to the given project' do
+    visit "/projects/#{@news_chic.id}"
+    expect(page).to have_content(2)
+
+    expect(page).to have_content("Add a Contestant to This Project")
+    expect(page).to have_field(:contestant_id)
+
+    fill_in :contestant_id, with: @kentaro.id
+    click_button("Add Contestant To Project")
+
+    expect(current_path).to eq("/projects/#{@news_chic.id}")
+    expect(page).to have_content(3)
+
+    visit "/contestants"
+
+    within("#contestant-#{@kentaro.id}") do
+      expect(page).to have_content(@boardfit.name)
+      expect(page).to have_content(@upholstery_tux.name)
+      expect(page).to have_content(@news_chic.name)
+    end
+  end
 end
