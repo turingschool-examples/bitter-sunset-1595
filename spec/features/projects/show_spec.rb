@@ -12,7 +12,6 @@ RSpec.describe 'projects/show page' do
 
   describe 'When I visit a projects show page' do
     it 'I see that projects name and material' do
-      save_and_open_page
       expect(page).to have_content("Project Name: #{@news_chic.name}")
       expect(page).to have_content("Material: #{@news_chic.material}")
       expect(page).to_not have_content("Name: #{@upholstery_tux.name}")
