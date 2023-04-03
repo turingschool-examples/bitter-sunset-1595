@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Project do
+RSpec.describe Contestant do
   before(:each) do
     @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
     @furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
@@ -17,11 +17,28 @@ RSpec.describe Project do
     @erin = Contestant.create(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15)
   end
 
-  it 'has project name and material and challenge theme' do
-    visit "/projects/#{@news_chic.id}"
+  it 'has contestant names' do
 
-    expect(page).to have_content("#{@news_chic.name}")
-    expect(page).to have_content("#{@news_chic.material}")
-    expect(page).to have_content("Recycled Material")
+    visit "/contestants"
+  
+    expect(page).to have_content("#{@jay.name}")
+    expect(page).to have_content("#{@gretchen.name}")
+    expect(page).to have_content("#{@kentaro.name}")
+    expect(page).to have_content("#{@erin.name}")
+  end
+
+  it 'has list of all associated projects names' do
+    @news_chic.contestants << @kentaro
+    @lit_fit.contestants << @kentaro
+
+    @news_chic.contestants << @gretchen
+
+    @lit_fit.contestants << @jay
+
+    visit "/contestants"
+
+    expect(page).to have_content("Projects: Litfit")
+    expect(page).to have_content("Projects: News Chic")
+    expect(page).to have_content("Projects: News Chic Litfit")
   end
 end
