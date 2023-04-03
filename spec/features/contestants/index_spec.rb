@@ -27,16 +27,19 @@ RSpec.describe '/contestants' do
     end
 
     it 'displays names of all contestants' do
-      visit '/contestants'
+        visit '/contestants'
 
-      expect(page).to have_content("Jay McCarroll")
-      expect(page).to have_content("Gretchen Jones")
-      expect(page).to have_content(@kentaro.name)
-      expect(page).to have_content(@erin.name)
-      expect(page).to have_content(@boardfit.name)
-      expect(page).to have_content(@upholstery_tux.name)
+        expect(page).to have_content("Jay McCarroll")
+        expect(page).to have_content("Gretchen Jones")
+        expect(page).to have_content(@kentaro.name)
+        expect(page).to have_content(@erin.name)
     end
 
+    it 'displays contestant and challenge name and theme' do
+        visit '/contestants'
 
+        expect(page).to have_content(@boardfit.name)
+        expect(page).to have_content(@upholstery_tux.name)
+    end
   end
 end
