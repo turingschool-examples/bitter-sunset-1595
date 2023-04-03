@@ -27,7 +27,7 @@ RSpec.describe "Project Show Page", type: :feature do
   it 'can see the total number of contestants on a project' do
     visit "/projects/#{@project.id}"
     
-    save_and_open_page
+    # save_and_open_page
     expect(page).to have_content("4")
   end
 end
