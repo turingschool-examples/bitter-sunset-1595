@@ -5,4 +5,5 @@ class ContestantProject < ApplicationRecord
   def self.all_contestants(project_id)
     where("project_id = #{project_id}")
   end
+
 end
