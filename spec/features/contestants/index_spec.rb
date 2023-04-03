@@ -32,7 +32,8 @@ RSpec.describe 'the contestants index' do
 
       expect(page).to have_content("Jay McCarroll Projects: News Chic")
       expect(page).to have_content("Gretchen Jones Projects: News Chic/ Upholstery Tuxedo")
-      expect(page).to have_content("Kentaro Kameyama Projects: Upholstery Tuxedo/ Boardfit")
+      expect(page).to have_content("Kentaro Kameyama Projects: Boardfit/ Upholstery Tuxedo")
+
       expect(page).to have_content("Erin Robertson Projects: Boardfit/")
     end
   end
