@@ -25,6 +25,7 @@ RSpec.describe Contestant, type: :model do
 
     let!(:con_proj_2) { ContestantProject.create!(contestant_id: gretchen.id, project_id: news_chic.id) }
     let!(:con_proj_3) { ContestantProject.create!(contestant_id: gretchen.id, project_id: upholstery_tux.id) }
+    
     it '#all_projects' do
       expect(gretchen.all_projects).to eq(['News Chic', 'Upholstery Tuxedo'])
     end
