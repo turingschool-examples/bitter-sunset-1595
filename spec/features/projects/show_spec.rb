@@ -16,6 +16,7 @@ RSpec.describe "Project Show" do
     ContestantProject.create!(contestant: contestant_1, project: project_3)
 
     ContestantProject.create!(contestant: contestant_2, project: project_2)
+    ContestantProject.create!(contestant: contestant_2, project: project_1)
   end
   describe "As a visitor, when I visit a '/projects/:id'" do
     it "shows projects name and material and theme of challenge that project belongs to" do
