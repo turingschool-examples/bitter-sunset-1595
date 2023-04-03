@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Project show page' do
+RSpec.describe 'Project show page', type: :feature do
   before(:each) do
     @challenge = Challenge.create!(theme: "Derelicte", project_budget: 1000)
     @project = @challenge.projects.create!(name: "Zoolander", material: "Garbage")
@@ -14,9 +14,7 @@ RSpec.describe 'Project show page' do
       expect(page).to have_content(@project.material)
       expect(page).to have_content(@project.challenge.theme)
     end
-  end
-  
-  describe 'as a visitor' do
+
     it 'shows the number of contestants on the project' do
       @contestant_1 = Contestant.create!(name: "Kentaro Kameyama", age: 30, hometown: "Denver", years_of_experience: 10)
       @contestant_2 = Contestant.create!(name: "Jay McCarroll", age: 36, hometown: "New York City", years_of_experience: 12)

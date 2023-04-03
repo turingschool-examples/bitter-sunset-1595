@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Contestants index page' do
+RSpec.describe 'Contestants index page', type: :feature do
   describe 'as a visitor' do
     it 'I see a list of names of all the contestants and their projects' do
       @challenge = Challenge.create!(theme: "Apartment Furnishings", project_budget: 1000)
