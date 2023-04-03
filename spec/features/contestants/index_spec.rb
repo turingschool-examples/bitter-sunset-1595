@@ -10,14 +10,21 @@ RSpec.describe "Contestants Index Page", type: :feature do
     @contestant_1 = Contestant.create!(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
     @contestant_2 = Contestant.create!(name: "Gretchen Jones", age: 36, hometown: "NYC", years_of_experience: 12)
     @contestant_3 = Contestant.create!(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
-    @contestant_4 = Contestant.create!(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15)
 
-    
+    @contestant_1.projects << @project_1
+    @contestant_2.projects << @project_2
+    @contestant_2.projects << @project_3
+    # require 'pry'; binding.pry
   end
 
   it 'can see a list of all contestants and their project names' do
     visit '/contestants'
 
-    expect(page).to have_content()
+    expect(page).to have_content("Jay McCarroll")
+    expect(page).to have_content("Gretchen Jones")
+    expect(page).to have_content("Litfit")
+    expect(page).to have_content("Rug Tuxedo")
+    expect(page).to have_content("News Chic")
+    expect(page).to_not have_content("Kentaro Kameyama")
   end
 end
