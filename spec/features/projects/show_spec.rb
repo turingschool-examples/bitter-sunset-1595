@@ -1,20 +1,6 @@
 require 'rails_helper'
 
-
-RSpec.describe Contestant, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-    it {should validate_presence_of :age}
-    it {should validate_presence_of :hometown}
-    it {should validate_presence_of :years_of_experience}
-  end
-
-  describe "relationships" do
-    it {should have_many :contestant_projects}
-    it {should have_many(:projects).through(:contestant_projects)}
-  end
-
-  describe "#contestant_number"do
+RSpec.describe Project do
   before(:each) do
     @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
     @furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
@@ -30,11 +16,43 @@ RSpec.describe Contestant, type: :model do
     @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
     @erin = Contestant.create(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15)
   end
-    it 'counts contestant number' do
-      @news_chic.contestants << @kentaro
 
-      @news_chic.contestants << @gretchen
-      expect(@news_chic.contestant_number).to eq(2)
-    end
+  it 'has project name and material and challenge theme' do
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_content("#{@news_chic.name}")
+    expect(page).to have_content("#{@news_chic.material}")
+    expect(page).to have_content("Recycled Material")
+  end
+
+  it 'shows # of contestants' do
+    @news_chic.contestants << @kentaro
+
+    @news_chic.contestants << @gretchen
+
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_content("Number of Contestants: 2")
+  end
+
+  it 'shows average years of experience for contestants' do
+    @news_chic.contestants << @kentaro
+
+    @news_chic.contestants << @gretchen
+    
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_content("Average Contestant Experience: 10 years")
+  end
+
+  it 'adds has contestant add form' do
+    visit "/projects/#{@news_chic.id}"
+    
+    expect(page).to have_content("Add Contestant To this Project")
+
+    fill_in("Contestants", :with => "#{@jay.id}")
+    click_button "Add Contestant"
+
+    expect(page).to have_content("Jay McCarroll")
   end
 end

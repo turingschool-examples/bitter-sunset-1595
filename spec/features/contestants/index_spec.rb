@@ -1,20 +1,6 @@
 require 'rails_helper'
 
-
-RSpec.describe Contestant, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-    it {should validate_presence_of :age}
-    it {should validate_presence_of :hometown}
-    it {should validate_presence_of :years_of_experience}
-  end
-
-  describe "relationships" do
-    it {should have_many :contestant_projects}
-    it {should have_many(:projects).through(:contestant_projects)}
-  end
-
-  describe "#contestant_number"do
+RSpec.describe Contestant do
   before(:each) do
     @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
     @furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
@@ -30,11 +16,29 @@ RSpec.describe Contestant, type: :model do
     @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
     @erin = Contestant.create(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15)
   end
-    it 'counts contestant number' do
-      @news_chic.contestants << @kentaro
 
-      @news_chic.contestants << @gretchen
-      expect(@news_chic.contestant_number).to eq(2)
-    end
+  it 'has contestant names' do
+
+    visit "/contestants"
+  
+    expect(page).to have_content("#{@jay.name}")
+    expect(page).to have_content("#{@gretchen.name}")
+    expect(page).to have_content("#{@kentaro.name}")
+    expect(page).to have_content("#{@erin.name}")
+  end
+
+  it 'has list of all associated projects names' do
+    @news_chic.contestants << @kentaro
+    @lit_fit.contestants << @kentaro
+
+    @news_chic.contestants << @gretchen
+
+    @lit_fit.contestants << @jay
+
+    visit "/contestants"
+
+    expect(page).to have_content("Projects: Litfit")
+    expect(page).to have_content("Projects: News Chic")
+    expect(page).to have_content("Projects: News Chic Litfit")
   end
 end
