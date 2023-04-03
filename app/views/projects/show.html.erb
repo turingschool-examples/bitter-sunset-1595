@@ -7,3 +7,10 @@
 <%= @project.contestants.size %></p>
 <p>Average years of experience on team:
 <%= (@project.contestants.average(:years_of_experience)).to_i %> years</p>
+
+<p>Add a contestant to this project:</p>
+<%= form_with(url: add_contestant_path(@project), method: :post) do |f| %>
+  <%= f.label :contestant_id, "Contestant ID"%>
+  <%= f.text_field :contestant_id %>
+  <%= f.submit "Add Contestant" %>
+<% end %>
