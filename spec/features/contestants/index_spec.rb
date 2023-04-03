@@ -1,11 +1,4 @@
-# I see a list of names of all the contestants
-# And under each contestants name I see a list of the projects (names) that they've been on
 
-# (e.g.   Kentaro Kameyama
-#         Projects: Litfit, Rug Tuxedo
-
-#         Jay McCarroll
-#         Projects: LeatherFeather)
 require 'rails_helper'
 
 RSpec.describe 'the Contestants index page' do
@@ -27,7 +20,7 @@ RSpec.describe 'the Contestants index page' do
       ContestantProject.create(contestant_id: gretchen.id, project_id: news_chic.id)
       ContestantProject.create(contestant_id: gretchen.id, project_id: upholstery_tux.id)
       visit "/contestants"
-save_and_open_page
+
       expect(page).to have_content(jay.name)
       expect(page).to have_content(jay.current_projects)
       expect(page).to have_content(gretchen.name)
