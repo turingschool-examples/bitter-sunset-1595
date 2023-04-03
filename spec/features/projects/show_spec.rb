@@ -24,4 +24,24 @@ RSpec.describe Project do
     expect(page).to have_content("#{@news_chic.material}")
     expect(page).to have_content("Recycled Material")
   end
+
+  it 'shows # of contestants' do
+    @news_chic.contestants << @kentaro
+
+    @news_chic.contestants << @gretchen
+
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_content("Number of Contestants: 2")
+  end
+
+  it 'shows average years of experience for contestants' do
+    @news_chic.contestants << @kentaro
+
+    @news_chic.contestants << @gretchen
+    
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_content("Average Contestant Experience: 10 years")
+  end
 end
