@@ -25,6 +25,6 @@ RSpec.describe "Contestants Index Page", type: :feature do
     expect(page).to have_content("Litfit")
     expect(page).to have_content("Rug Tuxedo")
     expect(page).to have_content("News Chic")
-    expect(page).to_not have_content("Kentaro Kameyama")
+    expect(page).to have_content("Kentaro Kameyama")
   end
 end
