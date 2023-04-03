@@ -26,11 +26,5 @@ RSpec.describe "Project Show" do
       expect(page).to have_content(challenge_1.theme)
       expect(page).to have_content(challenge_1.project_budget)
     end
-
-    # it "shows a count of the number of contestants on this project" do
-    #   visit "/projects/#{project_1.id}"
-
-    #   expect()
-    # end
   end
 end
