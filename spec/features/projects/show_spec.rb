@@ -44,4 +44,15 @@ RSpec.describe Project do
 
     expect(page).to have_content("Average Contestant Experience: 10 years")
   end
+
+  it 'adds has contestant add form' do
+    visit "/projects/#{@news_chic.id}"
+    
+    expect(page).to have_content("Add Contestant To this Project")
+
+    fill_in("Contestants", :with => "#{@jay.id}")
+    click_button "Add Contestant"
+
+    expect(page).to have_content("Jay McCarroll")
+  end
 end
