@@ -1,6 +1,5 @@
 class ContestantsController <ApplicationController
   def index
-    contestants = Contestant.all
-    require 'pry'; bindqing.pry
+    @contestants = Contestant.all
   end
 end
