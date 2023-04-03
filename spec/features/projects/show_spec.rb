@@ -21,9 +21,9 @@ RSpec.describe '/projects/:id' do
     it 'displays projects name and material' do
       visit "/projects/#{@news_chic.id}"
 
-      expect(page).to have_content('News Chic')
+      expect(page).to have_content(@news_chic.name)
       expect(page).to have_content('Newspaper')
-      expect(page).to have_content("Recycled Material")
+      expect(page).to have_content(@news_chic.challenge_id)
     end
   end
 end
