@@ -12,17 +12,23 @@ RSpec.describe Project, type: :model do
     it {should have_many(:contestants).through(:contestant_projects)}
   end
 
-  Project.all.each do |project|
-    describe "instance methods" do
-      describe "#contestant_count" do
-        it "returns the number of contestants for the project" do
+  describe "instance methods" do
+    describe "#contestant_count" do
+      it "returns the number of contestants for the project" do
+        Project.all.each do |project|
           expect(project.contestant_count).to eq(project.contestants.size)
         end
       end
 
       describe "#average_contestant_experience" do
         it "returns the average number of years of experience of all the contestants on the project" do
-          expect(project.average_contestant_experience).to eq(project.contestants.pluck(:years_of_experience).sum.fdiv(project.contestants.size))
+          Project.all.each do |project|
+            value = project.contestants.pluck(:years_of_experience).sum.fdiv(project.contestants.size)
+
+            expected = value.nan? ? nil : value
+
+            expect(project.average_contestant_experience).to eq(expected)
+          end
         end
       end
     end

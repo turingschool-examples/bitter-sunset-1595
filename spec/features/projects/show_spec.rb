@@ -1,27 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe 'Projects Show Page' do
-  Project.all.each do |project|
-    before(:each) do
+  it 'shows the projects information, project challenge theme, and number of contestants' do
+    Project.all.each do |project|
       visit "/projects/#{project.id}"
-    end
 
-    it 'shows the projects information' do
       expect(page).to have_content(project.name)
       expect(page).to have_content("Material: #{project.material}")
-    end
-
-    it 'shows the project challenge theme' do
       expect(page).to have_content("Challenge Theme: #{project.challenge.theme}")
-    end
-
-    it 'shows the number of contestants on the project' do
       expect(page).to have_content("Number of Contestants: #{project.contestant_count}")
     end
   end
 
-  Contestant.all.each_with_index do |contestant, i|
-    it 'has a form to add a contestant to the project' do
+  it 'has a form to add a contestant to the project' do
+    Contestant.all.each_with_index do |contestant, i|
       visit "/projects/#{@lit_fit.id}"
 
       fill_in("Contestant id", with: contestant.id)
@@ -31,7 +23,7 @@ RSpec.describe 'Projects Show Page' do
       expect(page).to have_content("Number of Contestants: #{i + 1}")
 
       value = @lit_fit.contestants.pluck(:years_of_experience).sum.fdiv(i + 1)
-      average_contestant_experience = value.nan? ? 0 : value
+      average_contestant_experience = value.nan? ? nil : value
 
       expect(page).to have_content("Average Contestant Experience: #{average_contestant_experience}")
     end
