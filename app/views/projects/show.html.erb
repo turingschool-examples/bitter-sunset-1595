@@ -1,0 +1,7 @@
+<h1>Projects Show</h1>
+<% @projects.each do |project| %>
+<p><b>Name:</b> <%= project.name %></p>
+<p><b>Material:</b> <%= project.material %></p>
+<p><b>Theme:</b> <%= project.challenge.theme %></p>
+<p><b>Project Budget:</b> <%= project.challenge.project_budget %></p><br>
+<% end %>
