@@ -17,7 +17,7 @@ RSpec.describe 'Contestants index page' do
       @contestant_2.projects << @project_3
 
       visit '/contestants'
-      save_and_open_page
+      
       expect(page).to have_content(@contestant_1.name)
       expect(page).to have_content("Projects: Litfit, Rug Tuxedo")
       expect(page).to have_content(@contestant_2.name)
