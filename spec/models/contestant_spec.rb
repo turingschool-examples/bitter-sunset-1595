@@ -13,4 +13,17 @@ RSpec.describe Contestant, type: :model do
     it {should have_many :contestant_projects}
     it {should have_many(:projects).through(:contestant_projects)}
   end
+
+  describe 'instance methods' do
+    before(:each) do
+      test_data
+    end
+
+    describe '#all_projects' do
+      it 'lists all projects of a contestant' do
+        expect(@jay.all_projects).to eq('News Chic')
+        expect(@gretchen.all_projects).to eq('News Chic, Upholstery Tuxedo')
+      end
+    end
+  end
 end
