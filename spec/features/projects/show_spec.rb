@@ -13,9 +13,15 @@ RSpec.describe "Project Show Page", type: :feature do
 
   it 'can show the projects name, material, and the challenge that it belongs to' do
     visit "/projects/#{@project.id}"
-
+    
     expect(page).to have_content("News Chic")
     expect(page).to have_content("Newspaper")
     expect(page).to have_content("Recycled Material")
+  end
+  
+  it 'can see the total number of contestants on a project' do
+    visit "/projects/#{@project.id}"
+    
+    expect(page).to have_content("Number of Contestants: 4")
   end
 end
