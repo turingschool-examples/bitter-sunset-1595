@@ -30,4 +30,10 @@ RSpec.describe "Project Show Page", type: :feature do
     # save_and_open_page
     expect(page).to have_content("4")
   end
+  
+  it 'can see the average years of experience for contestants by project' do
+    visit "/projects/#{@project.id}"
+    
+    expect(page).to have_content("12")
+  end
 end
