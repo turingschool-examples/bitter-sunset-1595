@@ -5,3 +5,5 @@
 <%= @project.material %>
 <p>Number of Contestants:
 <%= @project.contestants.count %></p>
+<p>Average years of experience on team:
+<%= (@project.contestants.average(:years_of_experience)).to_i %> years</p>
