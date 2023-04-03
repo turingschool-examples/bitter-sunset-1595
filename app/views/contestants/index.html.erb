@@ -3,8 +3,5 @@
 <% @contestants.each do |contestant| %>
   <h3><%= contestant.name %> </h3>
   
-  Projects: 
-  <% contestant.all_projects.each do |project| %>
-    <%= project %>
-    <% end %>
+  Projects: <%= contestant.all_projects.join(', ') %>
 <% end %>
