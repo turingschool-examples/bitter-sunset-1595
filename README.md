@@ -126,3 +126,6 @@ And when I visit the contestants index page
 I see that project listed under that contestant's name
 ```
 
+
+
+start: 11:45am
