@@ -13,6 +13,10 @@ class Project < ApplicationRecord
     self.contestants.each do |contestant|
       contestant_experience_holder << contestant.years_of_experience
     end
+    if contestant_experience_holder.empty? 
+      return "No Registered Contestants"
+    else
     contestant_experience_holder.sum / contestant_experience_holder.count
+    end
   end
 end

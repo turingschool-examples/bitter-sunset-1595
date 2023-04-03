@@ -36,5 +36,10 @@ RSpec.describe Project, type: :model do
 
       expect(@news_chic.average_contestant_experience).to eq(10)
     end
+    
+    it "avoids contestant experience when no contestants" do
+      
+      expect(@news_chic.average_contestant_experience).to eq("No Registered Contestants")
+    end
   end
 end
