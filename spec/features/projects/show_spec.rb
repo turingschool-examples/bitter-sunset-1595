@@ -14,4 +14,10 @@ RSpec.describe 'the Project Show page' do
       expect(page).to have_content("Challenge Theme: #{@lit_fit.challenge.theme}")
     end
   end
+
+  describe 'User Story 3' do
+    it 'displays the number of contestants on each project' do
+      expect(page).to have_content("Number of Contestants: #{@lit_fit.contestants.size}")
+    end
+  end
 end
