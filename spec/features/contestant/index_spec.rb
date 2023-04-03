@@ -40,6 +40,8 @@ RSpec.describe 'Contestant Index Page', type: :feature do
     expect(page).to have_content(@news_chic.name)
     expect(page).to have_content(@boardfit.name)
     expect(page).to have_content(@upholstery_tux.name)
-    # This isn't a great test, I'm not sure how to use the within syntax to test who has which projects and I am runing out of time. 
+    # This isn't a great test... I'm not sure how to use the `within` syntax to test
+    # specifically who is a part of which projects
+    # I am also not sure how to get each contestant's projects onto one line separted by commas on the show page
   end
 end
