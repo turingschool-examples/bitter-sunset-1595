@@ -56,5 +56,23 @@ RSpec.describe 'Project Show Page' do
 
       expect(page).to have_content("Average Contestant Experience: 12.5 years")
     end
+
+    it 'I see a form to add a contestant to this project' do
+      visit "/projects/#{@news_chic.id}"
+
+      expect(page).to have_content("Contestant ID:")
+      expect(page).to have_button("Add Contestant To Project")
+      expect(page).to have_content("Number of Contestants: 2")
+
+      fill_in :contestant_id, with: @kentaro.id
+      click_on "Add Contestant To Project"
+
+      expect(current_path).to eq("/projects/#{@news_chic.id}")
+      expect(page).to have_content("Number of Contestants: 3")
+
+      visit "/contestants"
+
+      expect(@kentaro.projects).to include(@news_chic)
+    end
   end
 end
