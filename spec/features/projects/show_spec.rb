@@ -67,14 +67,25 @@ RSpec.describe "Project's Show Page" do
       expect(page).to have_content("Hometown:")
       expect(page).to have_content("Years of Experience:")
     end
+
+    it "I fill out a field with an existing contestants id And hit 'Add Contestant To Project' I'm taken back to the project's show page" do
+      visit "/projects/#{@news_chic.id}"
+
+      fill_in 'name', with: "Erin Robertson"
+      fill_in 'age', with: 44
+      fill_in 'hometown', with: "Denver"
+      fill_in 'years_of_experience', with: 15
+
+      click_button "Add Contestant To Project"
+
+      expect(current_path).to eq("/projects/#{@news_chic.id}")
+    end
   end
 end
 
 # User Story Extension 2 - Adding a contestant to a project
 
-# As a visitor,
-# When I visit a project's show page
-# I see a form to add a contestant to this project
+
 # When I fill out a field with an existing contestants id
 # And hit "Add Contestant To Project"
 # I'm taken back to the project's show page

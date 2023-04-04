@@ -3,3 +3,17 @@
 <p>Challenge Theme: <%=@project.challenge.theme %></p>
 <p>Number of Contestants: <%= @project.number_of_contestants%></p>
 <p>Average Contestant Experience: <%= @project.average_years_exp %> years</p>
+
+<h2>New Contestant</h2>
+  <%= form_with url: '/contestant_projects', method: :post, local: true do |form| %>
+  <%= form.hidden_field :project_id, value: @project.id  %>  
+  <%= form.label :name, "Name:" %><br>
+  <%= form.text_field :name %> <br><br>
+  <%= form.label :age, "Age:" %><br>
+  <%= form.number_field :age %> <br><br>
+  <%= form.label :hometown, "Hometown:" %><br>
+  <%= form.text_field :hometown %> <br><br>
+  <%= form.label :years_of_experience, "Years of Experience:" %><br>
+  <%= form.number_field :years_of_experience %> <br><br>
+  <%= form.submit "Add Contestant To Project"%>
+  <% end %>
