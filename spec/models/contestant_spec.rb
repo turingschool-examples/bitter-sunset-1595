@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+ 
 
 RSpec.describe Contestant, type: :model do
   describe "validations" do
