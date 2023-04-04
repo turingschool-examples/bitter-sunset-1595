@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Project Show Page' do
+RSpec.describe 'US 1: Project Show Page' do
   before :each do
     @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
     @furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)

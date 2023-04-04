@@ -1,0 +1,10 @@
+<% @contestants.each do |contestant| %>
+  <div class="contestant">
+    <h2><%= contestant.name %></h2>
+    <p>Projects: 
+      <% contestant.projects.each do |project| %>
+        <%= project.name %><%= ',' unless project == contestant.projects.last%>
+      <% end %>
+    </p>
+  </div>
+<% end %>
