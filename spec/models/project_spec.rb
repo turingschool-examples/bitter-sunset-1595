@@ -39,5 +39,9 @@ RSpec.describe Project, type: :model do
     it '#number_of_contestants' do
       expect(@boardfit.number_of_contestants).to eq(2)
     end
+
+    it '#average_years_exp' do
+      expect(@boardfit.average_years_exp).to eq(11.5)
+    end 
   end
 end
