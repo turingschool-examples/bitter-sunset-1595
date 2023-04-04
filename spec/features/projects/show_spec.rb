@@ -24,6 +24,7 @@ RSpec.describe 'project show page' do
       ContestantProject.create(contestant_id: @kentaro.id, project_id: @upholstery_tux.id)
       ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
       ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
+      visit "/projects/#{@news_chic.id}"
     end
 
     it 'displays a project name and material'do
@@ -40,8 +41,11 @@ RSpec.describe 'project show page' do
 
     it 'displays contestant count' do
     visit "/projects/#{@news_chic.id}"
-    save_and_open_page
     expect(page).to have_content('Count: 2')
+    end
+
+    it 'displays average experience' do
+    expect(page).to have_content('Average Experience: 12.5')
     end
   end
 end

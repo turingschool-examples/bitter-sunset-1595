@@ -1,4 +1,5 @@
-<%= @project.name %>
-<%= @project.material %>
-<%= @challenge.theme %>
-Count: <%= @project.contestants.length %>
+<p> Name: <%= @project.name %> </p>
+<p> Material: <%= @project.material %> </p>
+<p> Theme: <%= @challenge.theme %> </p> 
+<p>Count: <%= @project.contestants.count %> </p>
+<p> Average Experience: <%= @project.contestants.average(:years_of_experience) %> </p>
