@@ -37,7 +37,7 @@ RSpec.describe 'projects show page' do
         expect(page).to have_content("Add a Contestant")
         kentaro_id = @kentaro.id
         fill_in(:contestant_id, with: kentaro_id)
-        click_button('Add Contestant To Project')
+        click_button('Add Contestant To Project by ID')
       end
 
       expect(current_path).to eq("/projects/#{@news_chic.id}")
