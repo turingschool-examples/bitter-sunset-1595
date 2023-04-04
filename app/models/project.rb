@@ -11,4 +11,9 @@ class Project < ApplicationRecord
   def number_of_contestants
     ContestantProject.where(project_id: id).count
   end
+
+  def average_years_experience
+    contestants = ContestantProject.select(:contestant_id).where(project_id: id)
+    Contestant.where(id: contestants).average(:years_of_experience)
+  end
 end
