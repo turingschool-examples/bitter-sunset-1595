@@ -16,7 +16,6 @@ RSpec.describe "Contestant Index Page" do
     @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
     @erin = Contestant.create(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15)
 
-
     ContestantProject.create(contestant_id: @jay.id, project_id: @news_chic.id)
     ContestantProject.create(contestant_id: @gretchen.id, project_id: @news_chic.id)
     ContestantProject.create(contestant_id: @gretchen.id, project_id: @upholstery_tux.id)
@@ -44,22 +43,10 @@ RSpec.describe "Contestant Index Page" do
     it "Under each contestants name I see a list of the projects (names) that they've been on" do
       visit '/contestants'
 
-      save_and_open_page
       expect(page).to have_content("Jay McCarroll")
       expect(page).to have_content("Projects: News Chic")
       expect(page).to have_content("Gretchen Jones")
       expect(page).to have_content("Projects: News Chic, Upholstery Tuxedo")
-
-      
     end
   end
 end
-
-# 
-# And under each contestants name I see a list of the projects (names) that they've been on
-
-# (e.g.   Kentaro Kameyama
-#         Projects: Litfit, Rug Tuxedo
-
-#         Jay McCarroll
-#         Projects: LeatherFeather)
