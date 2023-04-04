@@ -22,5 +22,13 @@ RSpec.describe Project, type: :model do
         expect(@news_chic.challenge_theme).to eq("Recycled Material")
       end
     end
+    describe '#number_of_contestants' do
+      it 'should return the number of contestants that worked on the project' do
+        expect(@news_chic.number_of_contestants).to eq(2)
+        expect(@upholstery_tux.number_of_contestants).to eq(2)
+        expect(@boardfit.number_of_contestants).to eq(2)
+        expect(@lit_fit.number_of_contestants).to eq(0)
+      end
+    end
   end
 end
