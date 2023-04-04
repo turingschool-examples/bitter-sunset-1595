@@ -8,7 +8,7 @@ RSpec.describe 'Project show page', type: :feature do
   describe '/projects/:id' do
     it "when I visit the project's show page I see that project's name and material and the challenge this project belongs to" do
       visit "/projects/#{lit_fit.id}"
-save_and_open_page
+
       expect(page).to have_content("Litfit")
       expect(page).to have_content("Material: Lamp Shade")
       expect(page).to have_content("Challenge Theme: Apartment Furnishings")
