@@ -5,3 +5,12 @@
   <%= "Number of Contestants: #{@project.number_of_contestants}" %><br>
   <%= "Average Contestant Experience: #{@project.average_years_experience} years" %>
 </section>
+<br>
+<section id="add-contestant">
+  <%= "Add a Contestant" %>
+  <%= form_with url: {controller: "contestant_projects", action: "create"}, method: :post, local: true do |form| %>
+    <%= form.text_field :contestant_id %>
+    <%= form.hidden_field :project_id, value: @project.id %>
+    <%= form.submit "Add Contestant To Project" %>
+  <% end %></p>
+</section>
