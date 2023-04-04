@@ -31,13 +31,31 @@ RSpec.describe "Contestant Index Page" do
 
       expect(current_path).to eq('/contestants')
     end
+
+    it 'I see a list of names of all the contestants' do
+      visit '/contestants'
+
+      expect(page).to have_content("Jay McCarroll")
+      expect(page).to have_content("Gretchen Jones")
+      expect(page).to have_content("Kentaro Kameyama")
+      expect(page).to have_content("Erin Robertson")
+    end
+
+    it "Under each contestants name I see a list of the projects (names) that they've been on" do
+      visit '/contestants'
+
+      save_and_open_page
+      expect(page).to have_content("Jay McCarroll")
+      expect(page).to have_content("Projects: News Chic")
+      expect(page).to have_content("Gretchen Jones")
+      expect(page).to have_content("Projects: News Chic, Upholstery Tuxedo")
+
+      
+    end
   end
 end
-#   User Story 2 of 3
 
-# As a visitor,
-# When I visit the contestants index page ("/contestants")
-# I see a list of names of all the contestants
+# 
 # And under each contestants name I see a list of the projects (names) that they've been on
 
 # (e.g.   Kentaro Kameyama
