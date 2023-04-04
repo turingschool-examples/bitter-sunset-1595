@@ -2,7 +2,7 @@
 <% @contestants.each do |contestant| %>
 <ul>
   <li><%= contestant.name %></li>
-  <% contestant.projects.earch do |project| %>
+  <% contestant.projects.each do |project| %>
     <li><%= project.name %></li>
   <% end %>
 </ul>
