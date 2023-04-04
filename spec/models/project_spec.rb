@@ -18,16 +18,23 @@ RSpec.describe Project, type: :model do
       test_data
     end
     describe '#challenge_theme' do
-      it 'should return the theme of the challenge the project belongs to' do
+      it 'returns the theme of the challenge the project belongs to' do
         expect(@news_chic.challenge_theme).to eq("Recycled Material")
       end
     end
     describe '#number_of_contestants' do
-      it 'should return the number of contestants that worked on the project' do
+      it 'returns the number of contestants that worked on the project' do
         expect(@news_chic.number_of_contestants).to eq(2)
         expect(@upholstery_tux.number_of_contestants).to eq(2)
         expect(@boardfit.number_of_contestants).to eq(2)
         expect(@lit_fit.number_of_contestants).to eq(0)
+      end
+    end
+    describe '#average_years_experience' do
+      it 'returns the average years of experience of contestants that worked on the project' do
+        expect(@news_chic.average_years_experience).to eq(12.5)
+        expect(@upholstery_tux.average_years_experience).to eq(10)
+        expect(@boardfit.average_years_experience).to eq(11.5)
       end
     end
   end
