@@ -8,7 +8,7 @@ RSpec.describe 'projects show page' do
 
   describe "As a visitor,when I visit a project's show page," do
     it "shows me that project's name and material" do
-      within('#project-info') do 
+      within('#project-info') do
         expect(page).to have_content("News Chic")
         expect(page).to have_content("Material: Newspaper")
       end
@@ -17,6 +17,12 @@ RSpec.describe 'projects show page' do
     it "shows me the theme of the challenge it belongs to" do
       within('#project-info') do 
         expect(page).to have_content("Challenge Theme: Recycled Material")
+      end
+    end
+
+    it 'shows the number of contestants on that project' do
+      within('#project-info') do
+        expect(page).to have_content("Number of Contestants: 2")
       end
     end
   end
