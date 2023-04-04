@@ -3,4 +3,8 @@ class Project < ApplicationRecord
   has_many :contestants, through: :contestant_projects
   validates_presence_of :name, :material
   belongs_to :challenge
+
+  def count_of_contestants
+    contestants.size
+  end
 end

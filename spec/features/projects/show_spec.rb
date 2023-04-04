@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'projects/show page' do
   before(:each) do
-    @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
-    @furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
-    @news_chic = @recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
-    @upholstery_tux = @furniture_challenge.projects.create(name: "Upholstery Tuxedo", material: "Couch")
+    test_data
 
     visit "/projects/#{@news_chic.id}"
   end
@@ -21,6 +18,11 @@ RSpec.describe 'projects/show page' do
       expect(page).to have_content("Project Name: #{@news_chic.name}")
       expect(page).to have_content("Material: #{@news_chic.material}")
       expect(page).to have_content("Challenge Theme: #{@recycled_material_challenge.theme}")
+    end
+
+    it 'I see a count of the number of contestants on this project' do
+      save_and_open_page
+      expect(page).to have_content("Number of Contestants: 2")
     end
   end
 end
