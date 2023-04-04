@@ -10,6 +10,11 @@ RSpec.describe 'Project Show Page' do
 
     @upholstery_tux = @furniture_challenge.projects.create(name: "Upholstery Tuxedo", material: "Couch")
     @lit_fit = @furniture_challenge.projects.create(name: "Litfit", material: "Lamp")
+
+    @jay = Contestant.create(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13, projects: [@news_chic])
+    @gretchen = Contestant.create(name: "Gretchen Jones", age: 36, hometown: "NYC", years_of_experience: 12, projects: [@news_chic, @upholstery_tux])
+    @kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8, projects: [@upholstery_tux, @boardfit])
+    @erin = Contestant.create(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15, projects: [@boardfit])
   end
 
   it 'US 1: I can see the project name and material and theme' do
@@ -24,5 +29,11 @@ RSpec.describe 'Project Show Page' do
     visit "projects/#{@news_chic.id}"
 
     expect(page).to have_content("Number of Contestants: #{@news_chic.contestants.count}")
+  end
+
+  it 'USE 1: I can see the average years of experience for the contestants that worked on that project' do
+    visit "projects/#{@news_chic.id}"
+
+    expect(page).to have_content("Average Contestant Experience: #{@news_chic.contestants.average(:years_of_experience)}")
   end
 end
