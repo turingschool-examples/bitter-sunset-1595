@@ -25,7 +25,7 @@ RSpec.describe 'Contestant index page', type: :feature do
   describe '/contestants' do
     it 'I see a list of names of all the contestants and a list of the projects they have been in' do
       visit '/contestants'
-save_and_open_page
+      
       Contestant.all.each do |contestant|
         expect(page).to have_content(contestant.name)
   
