@@ -36,4 +36,25 @@ RSpec.describe 'Project Show Page' do
 
     expect(page).to have_content("Average Contestant Experience: #{@news_chic.contestants.average(:years_of_experience)}")
   end
+
+  it 'USE 2: I can add contestants to a project' do
+    visit "projects/#{@news_chic.id}"
+
+    fill_in 'contestant_id', with: @jay.id
+    click_button 'Add Contestant To Project'
+
+    expect(page).to have_content('Contestant is already on this project')
+    expect(page).to have_content('Number of Contestants: 2')
+
+    fill_in 'contestant_id', with: -1
+    click_button 'Add Contestant To Project'
+
+    expect(page).to have_content('Contestant does not exist')
+
+    fill_in 'contestant_id', with: @kentaro.id
+    click_button 'Add Contestant To Project'
+
+    expect(page).to have_content('Contestant added to project')
+    expect(page).to have_content('Number of Contestants: 3')
+  end
 end

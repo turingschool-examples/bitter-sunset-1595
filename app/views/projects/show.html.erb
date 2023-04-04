@@ -3,3 +3,11 @@
 <h3>Challenge Theme: <%= @project.challenge.theme %></h3>
 <h3>Number of Contestants: <%= @project.contestants.count %></h3>
 <h3>Average Contestant Experience: <%= @project.contestants.average(:years_of_experience) %></h3>
+<%= form_with(url: add_contestant_path(@project), local: true) do |form| %>
+  <label for="contestant_id">Contestant ID:</label>
+  <%= form.number_field :contestant_id %>
+  <%= form.submit "Add Contestant To Project" %>
+<% end %>
+<% flash.each do |type, message| %>
+  <p><%= message %></p>
+<% end %>
