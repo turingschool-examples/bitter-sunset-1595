@@ -13,18 +13,18 @@ RSpec.describe "Project's Show Page" do
   end
 
   describe "When I visit a project's show page ('/projects/:id')" do 
-    it "exists" do
+    it 'exists' do
       visit "/projects/#{@news_chic.id}"
 
       expect(current_path).to eq("/projects/#{@news_chic.id}")
     end
+
+    it "I see that project's name, material, and challenge" do
+      visit "/projects/#{@news_chic.id}"
+
+      expect(page).to have_content("News Chic")
+      expect(page).to have_content("Material: Newspaper")
+      expect(page).to have_content("Challenge Theme: Recycled Material")
+    end
   end
 end
-
-# As a visitor,
-# When I visit a project's show page ("/projects/:id"),
-# I see that project's name and material
-# And I also see the theme of the challenge that this project belongs to.
-# (e.g.    Litfit
-#     Material: Lamp Shade
-#   Challenge Theme: Apartment Furnishings)
